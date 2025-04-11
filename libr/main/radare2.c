@@ -1310,6 +1310,7 @@ R_API int r_main_radare2(int argc, const char **argv) {
 		}
 	} else if (strcmp (argv[opt.ind - 1], "--") && !mr.project_name) {
 		if (mr.asmarch) {
+R_LOG_WARN ("VVV:%s:%s:%d asm.arch=%s", __FILE__, __func__, __LINE__, mr.asmarch);
 			r_config_set (r->config, "asm.arch", mr.asmarch);
 		}
 		if (mr.asmbits) {
@@ -1665,6 +1666,7 @@ R_API int r_main_radare2(int argc, const char **argv) {
 			r_config_set (r->config, "asm.bits", mr.asmbits);
 		}
 		if (mr.asmarch) {
+R_LOG_WARN ("VVV:%s:%s:%d asm.arch=%s", __FILE__, __func__, __LINE__, mr.asmarch);
 			r_config_set (r->config, "asm.arch", mr.asmarch);
 		}
 		if (mr.asmos) {
@@ -1747,6 +1749,7 @@ R_API int r_main_radare2(int argc, const char **argv) {
 		}
 	} else {
 		if (mr.asmarch) {
+R_LOG_WARN ("VVV:%s:%s:%d asm.arch=%s", __FILE__, __func__, __LINE__, mr.asmarch);
 			r_config_set (r->config, "asm.arch", mr.asmarch);
 		}
 		if (mr.asmbits) {

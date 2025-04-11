@@ -1,0 +1,2 @@
+r_asm_parse_pseudo - here use pseudo handler for parsing
+r_asm_mdisassemble_hexstr - dissasm string

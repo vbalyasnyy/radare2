@@ -269,20 +269,28 @@ R_API bool r_asm_use_parser(RAsm *a, const char *name) {
 
 	RListIter *iter;
 	RAsmPluginSession *aps;
+R_LOG_WARN ("VVV:%s:%s:%d >>> name=%s", __FILE__, __func__, __LINE__, name);
 	r_list_foreach (a->sessions, iter, aps) {
 		RAsmPlugin *ap = aps->plugin;
+//fprintf (stderr, "%s,", ap->meta.name);
 		if (!strcmp (ap->meta.name, name)) {
 			useparser (a, aps);
+//fprintf (stderr, "\n");
+//R_LOG_WARN ("VVV:%s:%s:%d <<< aps", __FILE__, __func__, __LINE__);
 			return true;
 		}
+//fprintf (stderr, "\n");
 	}
 	bool found = false;
+R_LOG_WARN ("VVV:%s:%s:%d", __FILE__, __func__, __LINE__);
 	if (strchr (name, '.')) {
+R_LOG_WARN ("VVV:%s:%s:%d", __FILE__, __func__, __LINE__);
 		char *sname = predotname (name);
 		r_list_foreach (a->sessions, iter, aps) {
 			RAsmPlugin *ap = aps->plugin;
 			char *shname = predotname (ap->meta.name);
 			found = !strcmp (shname, sname);
+R_LOG_WARN ("VVV:%s:%s:%d >>> %s==%s", __FILE__, __func__, __LINE__, name, ap->meta.name);
 			free (shname);
 			if (found) {
 				useparser (a, aps);
@@ -294,6 +302,7 @@ R_API bool r_asm_use_parser(RAsm *a, const char *name) {
 	if (!found) {
 		R_LOG_WARN ("Cannot find asm.parser for %s", name);
 		RAsmPlugin *pcur = R_UNWRAP3 (a, cur, plugin);
+R_LOG_WARN ("VVV:%s:%s:%d pcur->meta.name=%s", __FILE__, __func__, __LINE__, pcur->meta.name);
 		if (pcur && pcur->meta.name) {
 			if (r_str_startswith (pcur->meta.name, "null")) {
 				return false;
@@ -302,6 +311,7 @@ R_API bool r_asm_use_parser(RAsm *a, const char *name) {
 		// check if p->cur
 		r_list_foreach (a->sessions, iter, aps) {
 			RAsmPlugin *h = aps->plugin;
+R_LOG_WARN ("VVV:%s:%s:%d h->meta.name=%s", __FILE__, __func__, __LINE__, h->meta.name);
 			if (r_str_startswith (h->meta.name, "null")) {
 				R_LOG_INFO ("Fallback to null");
 				useparser (a, aps);

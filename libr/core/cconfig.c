@@ -761,6 +761,7 @@ static bool cb_asmarch(void *user, void *data) {
 		R_LOG_ERROR ("asm.arch: cannot find '%s'", node->value);
 		return false;
 	}
+R_LOG_WARN ("VVV:%s:%s:%d asm.parser=%s !!!", __FILE__, __func__, __LINE__, node->value);
 	r_config_set (core->config, "asm.parser", node->value);
 
 	if (core->anal->cur && !(core->anal->config->bits & core->anal->config->bits)) {
@@ -1071,6 +1072,7 @@ static bool cb_asmparser(void *user, void *data) {
 		print_node_options (node);
 		return false;
 	}
+R_LOG_WARN ("VVV:%s:%s:%d", __FILE__, __func__, __LINE__);
 	return r_asm_use_parser (core->rasm, node->value);
 }
 

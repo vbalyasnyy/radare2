@@ -1,5 +1,5 @@
 #!/bin/sh
-BUILD_DIRECTORY=$(mktemp -d tmp.XXXXXXXXXX)
+BUILD_DIRECTORY="xxx" #$(mktemp -d tmp.XXXXXXXXXX)
 [ -z "$BUILD_DIRECTORY" ] && exit 1
 export EXIT_CODE=0
 
@@ -17,6 +17,6 @@ else
 	EXIT_CODE=1
 fi
 
-rm -rf $BUILD_DIRECTORY
+#rm -rf $BUILD_DIRECTORY
 
 exit $EXIT_CODE

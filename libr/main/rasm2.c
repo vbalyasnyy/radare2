@@ -942,6 +942,7 @@ R_API int r_main_rasm2(int argc, const char *argv[]) {
 		goto beach;
 	}
 	if (filters) {
+R_LOG_WARN ("VVV:%s:%s:%d", __FILE__, __func__, __LINE__);
 		r_asm_use_parser (as->a, filters);
 		as->a->pseudo = true;
 	}

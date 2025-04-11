@@ -1,0 +1,12 @@
+libr/core/cmd_search.inc.c	- cmd_search use r_core_search_value_in_range for /V search in r2 (try to use r_search_range_*) 
+libr/core/canal.c			- r_core_search_value_in_range implementation (try to use r_search_range_* instead of raw implementation)
+libr/main/rafind2.c			- rafind impl, here we try to use r_search_range_* (cause we cant use r_core_* herte
+libr/include/r_search.h		- try to implement r_search_range_*
+libr/search/search.c		- try to implement r_search_range_*
+#### test/unit/legacy_unit/search/test-*
+
+Need to implement r_core_search_value_in_range with r_search_range_* API.
+####  + (looks like it is deprecated tests) add unit test in test/unit/legacy_unit/search/test-range.c
+ - implement r_search_range_*
+ - use r_search_range_* in r_core_search_value_in_range
+ - use r_search_range_* in rafind2 util /V flag implementatin

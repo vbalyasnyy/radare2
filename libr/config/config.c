@@ -331,6 +331,7 @@ R_API const char* r_config_get(RConfig *cfg, const char *name) {
 		if (r_config_node_is_bool (node)) {
 			return r_str_bool (r_str_is_true (node->value));
 		}
+//R_LOG_WARN ("VVV:%s:%s:%d %s=%s", __FILE__, __func__, __LINE__, name, node->value);
 		return node->value;
 	} else {
 		R_LOG_WARN ("Variable '%s' not found", name);
@@ -437,6 +438,7 @@ R_API RConfigNode* r_config_set(RConfig *cfg, const char *name, const char *valu
 	R_RETURN_VAL_IF_FAIL (cfg && cfg->ht, NULL);
 	R_RETURN_VAL_IF_FAIL (!IS_NULLSTR (name), NULL);
 	RConfigNode *node = r_config_node_get (cfg, name);
+R_LOG_WARN ("VVV:%s:%s:%d %s=%s", __FILE__, __func__, __LINE__, name, value);
 	if (node) {
 		if (r_config_node_is_ro (node)) {
 			R_LOG_ERROR ("Key '%s' is readonly", name);
