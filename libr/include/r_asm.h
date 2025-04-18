@@ -172,6 +172,7 @@ R_API bool r_asm_plugin_add(RAsm *a, RAsmPlugin *plugin);
 R_API bool r_asm_plugin_remove(RAsm *a, RAsmPlugin *plugin);
 
 extern RAsmPlugin r_asm_plugin_6502;
+extern RAsmPlugin r_asm_plugin_8051;
 extern RAsmPlugin r_asm_plugin_arm;
 extern RAsmPlugin r_asm_plugin_att2intel;
 extern RAsmPlugin r_asm_plugin_avr;
